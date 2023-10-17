@@ -1,0 +1,4 @@
+Agent-Class: net.x3f200c.pala4linux.launcherpatch.LauncherPatch
+Can-Redefine-Classes: true
+Can-Retransform-Classes: true
+Premain-Class: net.x3f200c.pala4linux.launcherpatch.LauncherPatch
