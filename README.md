@@ -15,5 +15,5 @@ This is pretty straightforward, just make a `.jar` file with the contents of the
 
 ## Using
 
-Simple, just add `-javaagent:path/to/the/built.jar` before `.jar` when you start the launcher located in the `~/paladium-games` folder.
+Simple, just add `-javaagent:path/to/the/built.jar` before `-jar` when you start the launcher located in the `~/paladium-games` folder.
 Also be sure to use Java 8 for better compatibility.
