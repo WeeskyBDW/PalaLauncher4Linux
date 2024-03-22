@@ -10,24 +10,22 @@ import javassist.NotFoundException;
 import javassist.CannotCompileException;
 
 class LauncherPatcher implements ClassFileTransformer {
-	private final String targetClassName;
+	private final String routeTargetClassName;
 
-	public LauncherPatcher(String className, ClassLoader classLoader) {
-        this.targetClassName = className;
+	public LauncherPatcher(String routerClassName) {
+		this.routeTargetClassName = routerClassName;
     }
 
 	@Override
 	public byte[] transform(ClassLoader loader, String className, Class<?> redefinedClass, ProtectionDomain protectionDomain, byte[] classBuffer) {
 		byte[] bytecode = classBuffer;
 
-		String finalTargetClassName = this.targetClassName.replaceAll("\\.", "/");
-        if (!className.equals(finalTargetClassName)) {
-            return bytecode;
-        }
+		ClassPool cp = ClassPool.getDefault();
 
-		if (className.equals(finalTargetClassName)) {
+		String finalRouterClassName = this.routeTargetClassName.replaceAll("\\.", "/");
+
+		if (className.equals(finalRouterClassName)) {
 			try {
-				ClassPool cp = ClassPool.getDefault();
 				CtClass crClass = cp.get("fr.paladium.router.route.common.CommonRoute");
 				CtMethod osGetterMethod = crClass.getDeclaredMethod("handleGetOS");
 
